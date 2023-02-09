@@ -1,0 +1,141 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Header y navegación */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+#logo {
+    padding-left: 50px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.header-right .enlace {
+    padding: 25px;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+.header-right .enlace:hover {
+    color: rgb(230, 230, 230);
+    text-decoration: none;
+    background-color: rgb(135, 148, 112);
+}
+
+/* Landing page proncipal */
+
+.landing-section {
+  margin: 0;
+  padding: 200px;
+  justify-content: center;
+  align-items: center;
+  height: 800px;
+  background-image: url("./img/background.png");
+  background-size: cover;
+}
+
+.landing-section h1 {
+  margin: 0;
+  font-size: 4em;
+  color: #fff;
+  text-shadow: 1px 1px #000;
+}
+
+.landing-section .buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.landing-section .buttons .enlace {
+  padding: 10px 20px;
+  font-size: 1.3em;
+  background-color: #fff;
+  color: #333;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-right: 20px;
+  border: #fff 2px solid;
+}
+
+.landing-section .buttons .enlace:hover {
+  padding: 10px 20px;
+  background-color: rgba(255, 255, 255, 0);
+  border: #fff 2px solid;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  border-radius: 5px;
+  margin-right: 20px;
+}
+
+/* Menus */
+
+.menu-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  height: 800px;
+  padding: 8%;
+}
+
+.menu-item {
+  padding-top: 4%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.menu {
+  width: 50%;
+  text-align: center;
+}
+
+.menu img {
+  width: 50%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+h3 {
+  margin-top: 0;
+}
+
+/* Formulario */
+
+form {
+  padding-top: 50px;
+  width: 500px;
+  margin: 50px auto;
+  text-align: left;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  margin-bottom: 30px;
+  font-size: 36px;
+  color: rgb(46, 75, 19);
+}
+
+/* Calendario */
+

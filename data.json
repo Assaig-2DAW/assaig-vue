@@ -1,0 +1,102 @@
+{
+  "menus": [
+    {
+      "id": 1,
+      "fecha": "2023-02-10",
+      "horario": "14:00-16:00",
+      "plazas": 15,
+      "overbooking": 15,
+      "plazasEspera": 0,
+      "profesorSala": "Jose Martinez,Amanda Perez",
+      "profesorCocina": "Sergio López",
+      "img": "menu1.png"
+    }
+  ],
+  "reservas": [
+    {
+      "id": 1,
+      "menuId": 1,
+      "nombre": "Rachel Samaniego",
+      "telefono": "658658658",
+      "email": "rachel@mail.com",
+      "numeroComensales": 4,
+      "alergenos": "1,5",
+      "subscrito": true,
+      "created_at": "2023-01-02 12:32:36", 
+      "updated_at": "2023-01-02 12:32:36",
+      "observaciones": "Me gusta el pan, ponedme mucho pan"
+    }
+  ],
+  "alergenos": [
+   {
+      "id": 1,
+      "nombre": "Contiene gluten",
+      "img": "1.png"
+    },
+    {
+      "id": 2,
+      "nombre": "Crustáceos",
+      "img": "2.png"
+    },
+    {
+      "id": 3,
+      "nombre": "Huevos",
+      "img": "3.png"
+    },
+    {
+      "id": 4,
+      "nombre": "Pescado",
+      "img": "4.png"
+    },
+    {
+      "id": 5,
+      "nombre": "Cacahuetes",
+      "img": "5.png"
+    },
+    {
+      "id": 6,
+      "nombre": "Soja",
+      "img": "6.png"
+    },
+    {
+      "id": 7,
+      "nombre": "Lacteos",
+      "img": "7.png"
+    },
+    {
+      "id": 8,
+      "nombre": "Frutos de cascara",
+      "img": "8.png"
+    },
+    {
+      "id": 9,
+      "nombre": "Apio",
+      "img": "9.png"
+    },
+    {
+      "id": 10,
+      "nombre": "Mostaza",
+      "img": "10.png"
+    },
+    {
+      "id": 11,
+      "nombre": "Semillas de sésamo",
+      "img": "11.png"
+    },
+    {
+      "id": 12,
+      "nombre": "Dióxido de azufre y sulfitos",
+      "img": "12.png"
+    },
+    {
+      "id": 13,
+      "nombre": "Moluscos",
+      "img": "13.png"
+    },
+    {
+      "id": 14,
+      "nombre": "Altramuces",
+      "img": "14.png"
+    }
+  ]
+}
