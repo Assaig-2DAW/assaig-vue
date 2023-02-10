@@ -26,11 +26,31 @@ export const useDataStore = defineStore('data', {
         this.reservas = reservasData.data
         this.alergenos = alergenosData.data
 
+        this.loadDays()
+
       } catch (err) {
         alert('Error al cargar el json: ' + err)
       }
 
     },
 
+    loadDays() {
+      this.menus.forEach(menu => {
+        let fechaMenu = String(new Date(menu.fecha))
+        const parts = fechaMenu.split(' ');
+        parts[4] = "00:00:00"
+        const date = parts.join(' ');
+        const searched = document.querySelector(`[data-test="`+date+`"]`);
+        searched.classList.add('verde')
+      });
+    },
+
+    getMenuIdByDate(date) {
+      console.log(date)
+      return this.reservas.filter((reserva) => Date(reserva.fecha) == Date(date))
+    }
+
   },
+
+
 })
