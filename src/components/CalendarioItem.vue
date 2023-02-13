@@ -39,7 +39,7 @@ export default {
 
 <template>
     <Datepicker v-model="date" inline :min-date="new Date()"
-        :day-names="['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo']"
+        :day-names="['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom']"
         :month-change-on-scroll="false" :preview-format="format">
         <template #action-select>
             <p class="custom-select" @click="goToForm(date)">Seleccionar</p>
@@ -48,20 +48,14 @@ export default {
 </template>
 
 <style>
-.dp__menu {
-    position: relative;
-    /* display: flex; */
-    width: 70%;
+
+.dp__theme_light {
+    --dp-hover-color: #f3f3f300;
 }
 
-.dp__calendar_wrap {
-    display: block;
-    padding-left: 3%;
-    padding-right: 3%;
-}
-
-.dp__action_row {
-    padding: 10px 90px;
+.dp__active_date {
+    background-color: rgba(240, 248, 255, 0);
+    color: rgb(42, 63, 37);
 }
 
 .dp__calendar_header_item {
@@ -78,5 +72,5 @@ export default {
 
 .custom-select:hover {
     background-color: rgba(105, 136, 97, 0.493);
-}
+} 
 </style>

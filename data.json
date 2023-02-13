@@ -30,7 +30,7 @@
   "alergenos": [
    {
       "id": 1,
-      "nombre": "Contiene gluten",
+      "nombre": "Gluten",
       "img": "1.png"
     },
     {

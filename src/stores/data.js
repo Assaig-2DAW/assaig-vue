@@ -35,14 +35,36 @@ export const useDataStore = defineStore('data', {
     },
 
     loadDays() {
+      const hourDiv = document.querySelector(`[data-test="open-time-picker-btn"]`);
+      hourDiv.remove();
+
+      const selectDiv = document.querySelector(`[class="dp__action_row"]`);
+      selectDiv.remove();
+
+      document.querySelector(".dp__active_date").classList.remove("dp__active_date");
+
       this.menus.forEach(menu => {
         let fechaMenu = String(new Date(menu.fecha))
         const parts = fechaMenu.split(' ');
         parts[4] = "00:00:00"
         const date = parts.join(' ');
-        const searched = document.querySelector(`[data-test="`+date+`"]`);
+        const searched = document.querySelector(`[data-test="` + date + `"]`);
         searched.classList.add('verde')
+
+        var contenido = searched.innerHTML;
+        var enlace = document.createElement("a");
+        enlace.href = '/reserva/' + menu.id;
+        enlace.innerHTML = contenido;
+        searched.innerHTML = "";
+        searched.appendChild(enlace);
+
+        searched.addEventListener("click", function() {
+          window.location = this.querySelector("a").href;
       });
+      
+
+      });
+
     },
 
     getMenuIdByDate(date) {
