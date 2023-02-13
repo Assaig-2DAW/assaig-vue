@@ -2,7 +2,7 @@
   "menus": [
     {
       "id": 1,
-      "fecha": "2023-02-10",
+      "fecha": "2023-02-14",
       "horario": "14:00-16:00",
       "plazas": 15,
       "overbooking": 15,
@@ -30,7 +30,7 @@
   "alergenos": [
    {
       "id": 1,
-      "nombre": "Contiene gluten",
+      "nombre": "Gluten",
       "img": "1.png"
     },
     {
