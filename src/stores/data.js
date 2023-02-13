@@ -58,19 +58,36 @@ export const useDataStore = defineStore('data', {
         searched.innerHTML = "";
         searched.appendChild(enlace);
 
-        searched.addEventListener("click", function() {
+        searched.addEventListener("click", function () {
           window.location = this.querySelector("a").href;
-      });
-      
+        });
+
 
       });
 
     },
 
-    getMenuIdByDate(date) {
-      console.log(date)
-      return this.reservas.filter((reserva) => Date(reserva.fecha) == Date(date))
-    }
+    getReserva(idReserva) {
+      return this.reservas.find((reserva) => reserva.id == idReserva)
+    },
+
+    async saveReserva(values) {
+      try {
+        if (values.idReserva) {
+          await axios.put(SERVER + '/reservas/' + values.idReserva, values)
+        } else {
+          await axios.post(SERVER + '/reservas/', values)
+        }
+        return true
+      } catch (error) {
+        alert(error)
+        return false
+      }
+    },
+
+    getMenu(idMenu) {
+      return this.reservas.find((menu) => menu.id == idMenu)
+    },
 
   },
 

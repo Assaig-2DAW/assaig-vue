@@ -13,13 +13,6 @@ export default {
     components: {
         Datepicker
     },
-    methods: {
-        ...mapActions(useDataStore, ['getMenuIdByDate']),
-        goToForm(date) {
-            const menu = this.getMenuIdByDate(date);
-            this.$router.push('/reserva/' + menu.id);
-        },
-    },
     setup() {
         const date = new Date();
         const format = (date) => {
@@ -41,9 +34,6 @@ export default {
     <Datepicker v-model="date" inline :min-date="new Date()"
         :day-names="['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom']"
         :month-change-on-scroll="false" :preview-format="format">
-        <template #action-select>
-            <p class="custom-select" @click="goToForm(date)">Seleccionar</p>
-        </template>
     </Datepicker>
 </template>
 

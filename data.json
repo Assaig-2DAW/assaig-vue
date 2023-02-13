@@ -15,20 +15,23 @@
   "reservas": [
     {
       "id": 1,
-      "menuId": 1,
+      "idMenu": 1,
       "nombre": "Rachel Samaniego",
       "telefono": "658658658",
       "email": "rachel@mail.com",
       "numeroComensales": 4,
-      "alergenos": "1,5",
-      "subscrito": true,
-      "created_at": "2023-01-02 12:32:36", 
+      "alergenos": [
+        1,
+        5
+      ],
+      "susscrito": true,
+      "created_at": "2023-01-02 12:32:36",
       "updated_at": "2023-01-02 12:32:36",
       "observaciones": "Me gusta el pan, ponedme mucho pan"
     }
   ],
   "alergenos": [
-   {
+    {
       "id": 1,
       "nombre": "Gluten",
       "img": "1.png"
