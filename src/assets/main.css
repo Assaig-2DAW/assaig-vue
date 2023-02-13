@@ -125,7 +125,7 @@ h3 {
 
 form {
   padding-top: 50px;
-  width: 500px;
+  width: 40%;
   margin: 50px auto;
   text-align: left;
   font-family: Arial, sans-serif;
@@ -137,9 +137,55 @@ h1 {
   color: rgb(46, 75, 19);
 }
 
+form img {
+  margin-left: 2%;
+  width: 5%;
+}
+
+.form-check {
+  display: inline-block;
+  margin-left: 0px;
+}
+
+.form-group {
+  margin: 3%;
+}
+
+.guardar {
+  padding: 2%;
+}
+
+.cancelar {
+  padding: 2%;
+  margin-left: 2%;
+}
+
+.guardar:hover {
+  background-color: rgb(164, 196, 155);
+  padding: 2%;
+  border-radius: 15px;
+}
+
+.cancelar:hover {
+  background-color: rgb(146, 146, 146);
+  padding: 2%;
+  border-radius: 15px;
+  margin-left: 2%;
+}
+
 /* Calendario */
 
 .verde {
-  background-color: darkolivegreen;
-  display: block;
+  background-color: rgb(122, 145, 83);
+  border-radius: 4px;
+}
+
+.verde:hover {
+  background-color: rgb(161, 179, 131);
+  border-radius: 4px;
+}
+
+.verde a {
+  text-decoration: none;
+  color: inherit;
 }
