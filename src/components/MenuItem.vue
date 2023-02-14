@@ -18,10 +18,8 @@ export default {
 </script>
 
 <template>
-    <div class="col-md-4 col-12 menu">
-        <h3>Menú dia {{ fechaMenu }}</h3>
-        <img src="../assets/img/menu1.png" alt="Menu 1">
-    </div>
+    <h4>Menú dia {{ fechaMenu }}</h4>
+    <img src="../assets/img/menu1.png" alt="Menu 1">
 </template>
 
 <style scoped>

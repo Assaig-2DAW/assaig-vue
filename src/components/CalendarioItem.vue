@@ -27,7 +27,6 @@ export default {
         }
     }
 };
-
 </script>
 
 <template>
@@ -50,6 +49,21 @@ export default {
 
 .dp__calendar_header_item {
     font-size: 0.85em;
+}
+
+.dp__month_year_row {
+    width: 100%;
+}
+
+.dp__instance_calendar {
+    background-color: white;
+    z-index: 4;
+    width: 150%;
+    height: auto;
+    box-shadow:
+       inset 0 -3em 3em rgba(0, 0, 0, 0.068),
+             0 0  0 2px rgb(255, 255, 255),
+             0.3em 0.3em 1em rgba(0, 0, 0, 0.281);
 }
 
 .custom-select {
