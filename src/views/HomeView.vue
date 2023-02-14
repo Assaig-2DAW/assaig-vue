@@ -13,9 +13,6 @@ export default {
     ...mapState(useDataStore, {
       menus: 'menus'
     }),
-    // ofertas() {
-    //     return this.getOfertasByEmpresa(this.$route.params.id)
-    // }
   },
   methods: {
     scroll(refName) {
@@ -28,22 +25,38 @@ export default {
 
 <template>
   <section class="landing-section row">
-    <h1 class="col-12 text-center">Bienvenidos a L'assaig</h1>
+    <div class="line">
+      <img src="../assets/img/line.png">
+    </div>
+    <h1 class="col-12">Bienvenidos a L'assaig</h1>
+    <p class="introduce text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer turpis nibh, accumsan elementum faucibus in, pulvinar nec ex. Phasellus bibendum eleifend ipsum et aliquet.</p>
     <div class="buttons col-12">
-      <v-btn class="enlace" text @click="scroll('menu')">Ver Menú</v-btn>
       <v-btn class="enlace" text @click="scroll('calendar')">Reservar</v-btn>
+      <v-btn class="enlace" text @click="scroll('menu')">Sobre nosotros</v-btn>
+    </div>
+    <div class="example">
+      <img class="tape-up" src="../assets/img/tape.png">
+      <img src="../assets/img/imagen.png">
+      <img class="tape-down" src="../assets/img/tape.png">
     </div>
   </section>
 
-  <section class="menu-content" id="menu">
+  <!-- <section class="menu-content" id="menu">
     <h1 class="col-12 text-center">Consulta los menús</h1>
     <div class="row menu-item" v-if="menus.length">
       <menu-item v-for="menu in menus" :key="menu.id" :menu="menu"></menu-item>
     </div>
     <p v-else class="w-75 m-auto">No hay menus disponibles</p>
-  </section>
+  </section> -->
 
-  <div class="calendar-section" id="calendar">
-    <calendario-item />
+  <div class="calendar-section row" id="calendar">
+    <h1 class="col-12">Reserva ahora tu mesa</h1><br>
+    <div class="item-verde"></div>
+    <calendario-item class="calendar-item"/>
+    <div class="image-content">
+      <img class="food1" src="../assets/img/comida1.png">
+      <img class="food2" src="../assets/img/comida6.png">
+      <img class="food3" src="../assets/img/comida3.png">
+    </div>
   </div>
 </template>
