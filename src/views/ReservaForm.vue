@@ -29,7 +29,8 @@ export default {
     computed: {
         ...mapState(useDataStore, {
             alergenos: 'alergenos',
-            getMenuById: 'getMenuById'
+            getMenuById: 'getMenuById',
+            getPlazasDisponibles: 'getPlazasDisponibles'
         }),
 
         titulo() {
@@ -37,7 +38,7 @@ export default {
         },
         menu() {
             return this.getMenuById(this.$route.params.id)
-        }
+        },
     },
     mounted() {
 
@@ -69,9 +70,21 @@ export default {
             values['suscrito'] = isSuscrito
 
             if (await this.saveReserva(values)) {
-                this.$router.push('/')
+                this.$swal({
+                    title: '¡Reserva realizada con exito!',
+                    text: 'Te enviaremos un correo con la información de tu reserva, con ella podrás modificar o cancelar la reserva',
+                    type: 'confirm',
+                    icon: 'success',
+                    confirmButtonColor: '#879470',
+                    confirmButtonText: 'Aceptar'
+                }).then(function() {
+                    window.location = '/'
+                });
             }
         },
+        cancel() {
+            this.$router.go(-1)
+        }
     },
 };
 </script>
@@ -107,7 +120,7 @@ export default {
                     </div>
                     <div class="form-group">
                         <label>Comensales:</label>
-                        <Field type="number" class="form-control" name="numeroComensales" />
+                        <Field type="number" class="form-control" name="numeroComensales" :max="plazasDisponibles"/>
                         <ErrorMessage class="error" name="numeroComensales" />
                     </div>
 
@@ -145,13 +158,13 @@ export default {
 
                     <br>
                     <button type="submit" class="btn guardar">Guardar</button>
-                    <button type="button" class="btn cancelar" @click="$router.push('/')">
+                    <button type="button" class="btn cancelar" @click="cancel">
                         Cancelar
                     </button>
                 </fieldset>
             </Form>
         </div>
-        <div class="col-6 menu-container">
+        <div class="col-4 menu-container">
             <menu-item :key="menu.id" :menu="menu"></menu-item>
         </div>
     </div>
