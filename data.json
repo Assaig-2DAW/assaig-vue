@@ -10,6 +10,17 @@
       "profesorSala": "Jose Martinez,Amanda Perez",
       "profesorCocina": "Sergio López",
       "img": "menu1.png"
+    },
+    {
+      "id": 2,
+      "fecha": "2023-02-17",
+      "horario": "14:00-16:00",
+      "plazas": 15,
+      "overbooking": 15,
+      "plazasEspera": 0,
+      "profesorSala": "Jose Martinez,Amanda Perez",
+      "profesorCocina": "Sergio López",
+      "img": "menu1.png"
     }
   ],
   "reservas": [
@@ -19,7 +30,7 @@
       "nombre": "Rachel Samaniego",
       "telefono": "658658658",
       "email": "rachel@mail.com",
-      "numeroComensales": 4,
+      "numeroComensales": 20,
       "alergenos": [
         1,
         5
@@ -28,6 +39,17 @@
       "created_at": "2023-01-02 12:32:36",
       "updated_at": "2023-01-02 12:32:36",
       "observaciones": "Me gusta el pan, ponedme mucho pan"
+    },
+    {
+      "idMenu": "2",
+      "nombre": "Rachel Samaniego",
+      "email": "raquel.samaniego95@gmail.com",
+      "telefono": "652652652",
+      "numeroComensales": "2",
+      "alergenos": [],
+      "observaciones": "Hola que tal",
+      "suscrito": false,
+      "id": 2
     }
   ],
   "alergenos": [

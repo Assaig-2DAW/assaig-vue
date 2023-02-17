@@ -1,24 +1,27 @@
 <script>
-import { ref } from 'vue';
-
 export default {
-    methods: {
-        scroll(refName) {
-            const element = document.getElementById(refName);
-            element.scrollIntoView({behavior: "smooth"});
-        }
+    computed: {
+    isHomePage() {
+      return this.$route.path === '/'
     }
+  }
 }
 </script>
 
 <template>
+
     <header class="header">
         <div id="logo">
-            <a href="/"><img src="../assets/img/logo.png" width="150"/></a>
+            <a href="/"><img src="../assets/img/logo2.png" width="150" /></a>
         </div>
         <nav class="header-right">
-            <v-btn class="enlace" text @click="scroll('menu')">Ver Menú</v-btn>
-            <v-btn class="enlace" text @click="scroll('calendar')">Reservar</v-btn>
+            
+            <router-link v-if="isHomePage" class="enlace" to="/" v-scroll-to="'#calendar'">
+                Reservar            
+            </router-link>
+            <a v-else class="enlace" href="/#calendar">
+                Reservar
+            </a>
         </nav>
-    </header>
+</header>
 </template>

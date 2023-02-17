@@ -30,14 +30,12 @@ export default {
 </script>
 
 <template>
-    <Datepicker v-model="date" inline :min-date="new Date()"
-        :day-names="['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom']"
+    <Datepicker v-model="date" inline :min-date="new Date()" :day-names="['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom']"
         :month-change-on-scroll="false" :preview-format="format">
-    </Datepicker>
+</Datepicker>
 </template>
 
 <style>
-
 .dp__theme_light {
     --dp-hover-color: #f3f3f300;
 }
@@ -61,20 +59,8 @@ export default {
     width: 150%;
     height: auto;
     box-shadow:
-       inset 0 -3em 3em rgba(0, 0, 0, 0.068),
-             0 0  0 2px rgb(255, 255, 255),
-             0.3em 0.3em 1em rgba(0, 0, 0, 0.281);
+        inset 0 -3em 3em rgba(0, 0, 0, 0.068),
+        0 0 0 2px rgb(255, 255, 255),
+        0.3em 0.3em 1em rgba(0, 0, 0, 0.281);
 }
-
-.custom-select {
-    padding: 5px;
-    cursor: pointer;
-    color: black;
-    margin: 0;
-    display: inline-block;
-}
-
-.custom-select:hover {
-    background-color: rgba(105, 136, 97, 0.493);
-} 
 </style>
