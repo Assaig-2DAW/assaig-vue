@@ -139,7 +139,7 @@ export default {
                         <label class="col-12">Selecciona los alérgenos:</label>
                         <div class="form-check col-6" v-for="alergeno in alergenos" :key="alergeno.id">
                             <Field name="alergenos" type="checkbox" :value="alergeno.id" />
-                            <img :src="'/src/assets/img/alergenos/' + alergeno.img" /> {{ alergeno.nombre }}
+                            <img :src="'/src/assets/img/alergenos/' + alergeno.icono + '.png'" /> {{ alergeno.nombre }}
                         </div>
                         <ErrorMessage class="error" name="alergenos" />
                     </div>
