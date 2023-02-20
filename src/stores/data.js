@@ -2,32 +2,32 @@ import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import axios from 'axios'
 
-const SERVER = 'http://localhost:3000'
+const SERVER = 'http://assaig.api/api'
 
 export const useDataStore = defineStore('data', {
   state() {
     return {
-      menus: [],
+      fechas: [],
       reservas: [],
       alergenos: [],
     }
   },
   getters: {
-    getMenuById: (state) => (id) => state.menus
+    getMenuById: (state) => (id) => state.fechas
       .find((menu) => menu.id == id) || {},
   },
   actions: {
     async loadData() {
 
       try {
-        const [menusData, reservasData, alergenosData] = await Promise.all([
-          axios.get(`${SERVER}/menus`),
-          axios.get(`${SERVER}/reservas`),
-          axios.get(`${SERVER}/alergenos`)])
+        const [fechasData, reservasData, alergenosData] = await Promise.all([
+          axios.get(`${SERVER}/fechas/`),
+          axios.get(`${SERVER}/reservas/`),
+          axios.get(`${SERVER}/alergenos/`)])
 
-        this.menus = menusData.data
-        this.reservas = reservasData.data
-        this.alergenos = alergenosData.data
+        this.fechas = fechasData.data.data
+        this.reservas = reservasData.data.data
+        this.alergenos = alergenosData.data.data
 
         this.loadCalendar()
 
@@ -48,17 +48,16 @@ export const useDataStore = defineStore('data', {
         selectDiv.remove();
         classActive.classList.remove("dp__active_date");
 
-        this.menus.forEach(menu => {
+        this.fechas.forEach(menu => {
           let fechaMenu = String(new Date(menu.fecha))
           const parts = fechaMenu.split(' ');
           parts[4] = "00:00:00"
           const date = parts.join(' ');
           const searched = document.querySelector(`[data-test="` + date + `"]`);
 
-          this.addToolTip(searched, menu)
-          this.addPropertyToDay(searched, menu)
-
           if (searched) {
+            this.addToolTip(searched, menu)
+            this.addPropertyToDay(searched, menu)
             if(!searched.classList.contains('rojo')) {
               var contenido = searched.innerHTML;
               var enlace = document.createElement("a");
@@ -96,7 +95,7 @@ export const useDataStore = defineStore('data', {
     },
 
     addPropertyToDay(searched, menu) {
-      let plazasToTales = menu.plazas + menu.overbooking
+      let plazasToTales = menu.pax + menu.overbooking
       let reservasRealizadas = this.getReservasHechas(menu)
 
       if (reservasRealizadas == plazasToTales) {
@@ -109,16 +108,16 @@ export const useDataStore = defineStore('data', {
     },
 
     getPlazasDisponibles(menu) {
-      let plazasToTales = menu.plazas + menu.overbooking
+      let plazasToTales = menu.pax + menu.overbooking
       let reservasRealizadas = this.getReservasHechas(menu)
       return plazasToTales - reservasRealizadas
     },
 
     getReservasHechas(menu) {
-      let reservasOfMenu = this.reservas.filter((reserva) => reserva.idMenu == menu.id)
+      let reservasOfMenu = this.reservas.filter((reserva) => reserva.fecha['id'] == menu.id)
       let reservasHechas = 0
       reservasOfMenu.forEach(reserva => {
-        reservasHechas += Number(reserva.numeroComensales)
+        reservasHechas += Number(reserva.comensales)
       });
       return reservasHechas
     },
