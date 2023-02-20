@@ -40,10 +40,10 @@ export default {
         accumsan elementum faucibus in, pulvinar nec ex. Phasellus bibendum eleifend ipsum et aliquet.</p>
       <div class="buttons col-12">
         <v-btn class="enlace" text @click="scroll('calendar')">Reservar</v-btn>
-        <v-btn class="enlace" text @click="scroll('menu')">Sobre nosotros</v-btn>
+        <v-btn class="enlace" text @click="scroll('about')">Sobre nosotros</v-btn>
       </div>
       <div class="example">
-        <img src="../assets/img/imagen1.png">
+        <img src="../assets/img/assaig1.png">
       </div>
     </section>
 
@@ -53,27 +53,22 @@ export default {
       <calendario-item class="calendar-item" />
       <div class="image-content">
         <img class="food1" src="../assets/img/comida1.png">
-        <img class="food2" src="../assets/img/comida6.png">
+        <img class="food2" src="../assets/img/comida2.png">
         <img class="food3" src="../assets/img/comida3.png">
       </div>
     </SectionOne>
-    <SectionTwo class="about-section row" id="about">
-      <img class="banner" src="../assets/img/assaig.png">
-      <h1 class="col-12 text-center">QUIÉNES SOMOS</h1><br>
-      <div class="row">
-        <div class="row col-6 about">
-          <div class="col-12">
-            <img src="../assets/img/comida2.png">
-          </div>
-          <div class="col-12">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer turpis nibh,
-        accumsan elementum faucibus in, pulvinar nec ex. Phasellus bibendum eleifend ipsum et aliquet.</p>
-          </div>
+    <SectionTwo class="about-section" id="about">
+      <div class="about">
+        <img src="../assets/img/assaig.png" class="pic">
+        <div class="text row">
+          <h2 class="text-center">Quiénes somos</h2>
+          <h5>FP Cocina & FP Restauración <span>en CIP FP Batoi</span></h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita natus ad sed harum itaque ullam enim quas,
+            veniam accusantium, quia animi id eos adipisci iusto molestias asperiores explicabo cum vero atque amet
+            corporis! Soluta illum facere consequuntur magni. Ullam dolorem repudiandae cumque voluptate consequatur
+            consectetur, eos provident necessitatibus reiciendis corrupti!</p>
         </div>
-
-        <div></div>
       </div>
       <!-- <div class="item-verde"></div> -->
     </SectionTwo>
-  </v-content>
-</template>
+</v-content></template>
