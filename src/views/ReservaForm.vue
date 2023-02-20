@@ -72,7 +72,7 @@ export default {
             if (await this.saveReserva(values)) {
                 this.$swal({
                     title: '¡Reserva realizada con exito!',
-                    text: 'Te enviaremos un correo con la información de tu reserva, con ella podrás modificar o cancelar la reserva',
+                    text: 'Te enviaremos un correo con toda la información de tu reserva',
                     type: 'confirm',
                     icon: 'success',
                     confirmButtonColor: '#879470',
@@ -91,7 +91,7 @@ export default {
 <template>
     <div class="row">
 
-        <div class="col-6 form-container">
+        <div class="col-lg-6 col-12 form-container">
             <Form :initial-values="reserva" @submit="submitForm" :validation-schema="schema">
                 <fieldset>
                     <h1>{{ titulo }}</h1>
@@ -164,7 +164,7 @@ export default {
                 </fieldset>
             </Form>
         </div>
-        <div class="col-4 menu-container">
+        <div class="col-lg-4 col-12 menu-container">
             <menu-item :key="menu.id" :menu="menu"></menu-item>
         </div>
     </div>

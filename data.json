@@ -2,7 +2,7 @@
   "menus": [
     {
       "id": 1,
-      "fecha": "2023-02-16",
+      "fecha": "2023-02-21",
       "horario": "14:00-16:00",
       "plazas": 15,
       "overbooking": 15,
@@ -13,7 +13,7 @@
     },
     {
       "id": 2,
-      "fecha": "2023-02-17",
+      "fecha": "2023-02-23",
       "horario": "14:00-16:00",
       "plazas": 15,
       "overbooking": 15,
@@ -50,6 +50,39 @@
       "observaciones": "Hola que tal",
       "suscrito": false,
       "id": 2
+    },
+    {
+      "idMenu": "2",
+      "nombre": "Pablo Picasso Juan",
+      "email": "raquel.samaniego95@gmail.com",
+      "telefono": "658658658",
+      "numeroComensales": "2",
+      "alergenos": [],
+      "observaciones": "ur9ghesrhgioershghdrghed",
+      "suscrito": true,
+      "id": 3
+    },
+    {
+      "idMenu": "2",
+      "nombre": "Pablo Picasso Juan",
+      "email": "raquel.samaniego95@gmail.com",
+      "telefono": "658658658",
+      "numeroComensales": "2",
+      "alergenos": [],
+      "observaciones": "rguiaweurgerauhgiuerwhguheriawu",
+      "suscrito": true,
+      "id": 4
+    },
+    {
+      "idMenu": "1",
+      "nombre": "Pablo Picasso Adios",
+      "email": "raquel.samaniego95@gmail.com",
+      "telefono": "652652652",
+      "numeroComensales": "10",
+      "alergenos": [],
+      "observaciones": "tkyedtykdtkdty",
+      "suscrito": false,
+      "id": 5
     }
   ],
   "alergenos": [
