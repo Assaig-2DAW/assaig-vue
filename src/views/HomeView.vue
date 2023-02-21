@@ -7,10 +7,6 @@ import { mapState, mapActions } from 'pinia';
 
 export default {
   name: 'HomePage',
-  mounted() {
-    const store = useDataStore()
-    store.loadCalendar()
-  },
   components: {
     MenuItem,
     CalendarioItem
