@@ -52,10 +52,7 @@ export default {
     document.querySelector('input[value="no"]').addEventListener("click", function () {
       document.querySelector("#alergenos").style.display = "none";
     });
-    // if (this.$route.params.id) {
-    //     this.editando = true;
-    //     this.cargareserva();
-    // }
+
   },
   methods: {
     ...mapActions(useDataStore, ["getReserva", "saveReserva", "getPlazasDisponibles"]),

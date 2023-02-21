@@ -1,9 +1,39 @@
 <script>
 import { useDataStore } from '../stores/data'
 import { mapState, mapActions } from 'pinia';
+import axios from 'axios';
+const SERVER = 'http://api.saar.alcoitec.es/api'
+
 export default {
     props: ['menu'],
+    data() {
+        return {
+            image: ""
+        };
+    },
+    mounted() {
+        this.fetchImage()
+    },
+    methods: {
+        fetchImage() {
+            axios.get(SERVER + '/images/' + this.menu.menu, {
+                responseType: 'arraybuffer'
+            })
+                .then(response => {
+                    const blob = new Blob([response.data], { type: response.headers['content-type'] });
+                    const imgUrl = URL.createObjectURL(blob);
+                    this.image = imgUrl;
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        }
+    },
     computed: {
+        ...mapState(useDataStore, {
+            getMenuById: "getMenuById",
+        }),
+
         fechaMenu() {
             const date = new Date(this.menu.fecha)
             const months = [
@@ -18,8 +48,9 @@ export default {
 </script>
 
 <template>
-    <h4>Menú dia {{ fechaMenu }}</h4>
-    <img src="../assets/img/menu1.png" alt="Menu 1">
+    <h4 v-if="image !== ''">Menú dia {{ fechaMenu }}</h4>
+    <h4 v-else>El menu del dia todavía no ha sido definido</h4>
+    <img v-if="image !== ''" :src="image" alt="Menu 1">
 </template>
 
 <style scoped>
