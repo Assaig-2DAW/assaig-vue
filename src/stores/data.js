@@ -2,7 +2,7 @@ import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import axios from 'axios'
 
-const SERVER = 'http://assaig.api/api'
+const SERVER = 'http://api.saar.alcoitec.es/api'
 
 export const useDataStore = defineStore('data', {
   state() {
@@ -50,13 +50,17 @@ export const useDataStore = defineStore('data', {
       this.loadDays()
 
       const navNextMonth = document.querySelector(`[aria-label="Next month"]`)
-      navNextMonth.addEventListener("click", function () {
-        this.loadDays()
-      }.bind(this))
+      if (navNextMonth) {
+        navNextMonth.addEventListener("click", function () {
+          this.loadDays()
+        }.bind(this))
+      }
       const navPreventMonth = document.querySelector(`[aria-label="Previous month"]`)
-      navPreventMonth.addEventListener("click", function () {
-        this.loadDays()
-      }.bind(this))
+      if (navPreventMonth) {
+        navPreventMonth.addEventListener("click", function () {
+          this.loadDays()
+        }.bind(this))
+      }
     },
 
     loadDays() {
@@ -133,6 +137,20 @@ export const useDataStore = defineStore('data', {
         reservasHechas += Number(reserva.comensales)
       });
       return reservasHechas
+    },
+
+    getImageByMenu(menu) {
+      axios.get( SERVER + '/images/' + menu.menu, {
+        responseType: 'arraybuffer'
+      })
+        .then(response => {
+          const blob = new Blob([response.data], { type: response.headers['content-type'] });
+          const imgUrl = URL.createObjectURL(blob);
+          return imgUrl;
+        })
+        .catch(error => {
+          console.error(error);
+        });
     },
 
     getReserva(idReserva) {
