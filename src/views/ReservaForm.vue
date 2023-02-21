@@ -31,7 +31,6 @@ export default {
     ...mapState(useDataStore, {
       alergenos: "alergenos",
       getMenuById: "getMenuById",
-      getPlazasDisponibles: "getPlazasDisponibles",
     }),
 
     titulo() {
@@ -40,6 +39,10 @@ export default {
     menu() {
       return this.getMenuById(this.$route.params.id);
     },
+    maxComensales() {
+      let menu = this.getMenuById(this.$route.params.id);
+      return this.getMaxPlazas(menu)
+    }
   },
   mounted() {
     document.querySelector('input[value="si"]').addEventListener("click", function () {
@@ -55,7 +58,10 @@ export default {
     // }
   },
   methods: {
-    ...mapActions(useDataStore, ["getReserva", "saveReserva"]),
+    ...mapActions(useDataStore, ["getReserva", "saveReserva", "getPlazasDisponibles"]),
+    getMaxPlazas(menu) {
+      return this.getPlazasDisponibles(menu)
+    },
     cargaReserva() {
       this.reserva = this.getReserva(this.$route.params.id);
     },
@@ -98,13 +104,7 @@ export default {
             <Field type="hidden" name="fecha_id" class="form-control" disabled />
           </div>
           <div class="form-group">
-            <Field
-              type="hidden"
-              name="fecha_id"
-              :value="this.$route.params.id"
-              class="form-control"
-              disabled
-            />
+            <Field type="hidden" name="fecha_id" :value="this.$route.params.id" class="form-control" disabled />
           </div>
           <div class="form-group">
             <label>Nombre:</label>
@@ -123,12 +123,11 @@ export default {
           </div>
           <div class="form-group">
             <label>Comensales:</label>
-            <Field
-              type="number"
-              class="form-control"
-              name="comensales"
-              :max="getPlazasDisponibles"
-            />
+            <Field type="number" 
+            class="form-control" 
+            name="comensales" 
+            min="1" 
+            :max="maxComensales"/>
             <ErrorMessage class="error" name="comensales" />
           </div>
 
@@ -147,11 +146,7 @@ export default {
               los seleccionados
             </p>
             <label class="col-12">Selecciona los alérgenos:</label>
-            <div
-              class="form-check col-6"
-              v-for="alergeno in alergenos"
-              :key="alergeno.id"
-            >
+            <div class="form-check col-6" v-for="alergeno in alergenos" :key="alergeno.id">
               <Field name="alergenos" type="checkbox" :value="alergeno.id" />
               <img :src="'/src/assets/img/alergenos/' + alergeno.icono + '.png'" />
               {{ alergeno.nombre }}
