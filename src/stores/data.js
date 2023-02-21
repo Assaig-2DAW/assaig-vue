@@ -131,7 +131,15 @@ export const useDataStore = defineStore('data', {
         if (values.idReserva) {
           await axios.put(SERVER + '/reservas/' + values.idReserva, values)
         } else {
-          await axios.post(SERVER + '/reservas/', values)
+          await axios.post(SERVER + '/reservas', {
+            'nombre': values.nombre,
+            'email': values.email ,
+            'telefono':values.telefono ,
+            'comensales': values.comensales ,
+            'observaciones': values.observaciones,
+            'fecha_id': values.fecha_id,
+            'alergenos':values.alergenos
+          })
         }
         return true
       } catch (error) {
