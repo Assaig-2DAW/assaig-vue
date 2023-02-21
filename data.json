@@ -2,7 +2,18 @@
   "menus": [
     {
       "id": 1,
-      "fecha": "2023-02-10",
+      "fecha": "2023-02-21",
+      "horario": "14:00-16:00",
+      "plazas": 15,
+      "overbooking": 15,
+      "plazasEspera": 0,
+      "profesorSala": "Jose Martinez,Amanda Perez",
+      "profesorCocina": "Sergio López",
+      "img": "menu1.png"
+    },
+    {
+      "id": 2,
+      "fecha": "2023-02-23",
       "horario": "14:00-16:00",
       "plazas": 15,
       "overbooking": 15,
@@ -15,22 +26,69 @@
   "reservas": [
     {
       "id": 1,
-      "menuId": 1,
+      "idMenu": 1,
       "nombre": "Rachel Samaniego",
       "telefono": "658658658",
       "email": "rachel@mail.com",
-      "numeroComensales": 4,
-      "alergenos": "1,5",
-      "subscrito": true,
-      "created_at": "2023-01-02 12:32:36", 
+      "numeroComensales": 20,
+      "alergenos": [
+        1,
+        5
+      ],
+      "susscrito": true,
+      "created_at": "2023-01-02 12:32:36",
       "updated_at": "2023-01-02 12:32:36",
       "observaciones": "Me gusta el pan, ponedme mucho pan"
+    },
+    {
+      "idMenu": "2",
+      "nombre": "Rachel Samaniego",
+      "email": "raquel.samaniego95@gmail.com",
+      "telefono": "652652652",
+      "numeroComensales": "2",
+      "alergenos": [],
+      "observaciones": "Hola que tal",
+      "suscrito": false,
+      "id": 2
+    },
+    {
+      "idMenu": "2",
+      "nombre": "Pablo Picasso Juan",
+      "email": "raquel.samaniego95@gmail.com",
+      "telefono": "658658658",
+      "numeroComensales": "2",
+      "alergenos": [],
+      "observaciones": "ur9ghesrhgioershghdrghed",
+      "suscrito": true,
+      "id": 3
+    },
+    {
+      "idMenu": "2",
+      "nombre": "Pablo Picasso Juan",
+      "email": "raquel.samaniego95@gmail.com",
+      "telefono": "658658658",
+      "numeroComensales": "2",
+      "alergenos": [],
+      "observaciones": "rguiaweurgerauhgiuerwhguheriawu",
+      "suscrito": true,
+      "id": 4
+    },
+    {
+      "idMenu": "1",
+      "nombre": "Pablo Picasso Adios",
+      "email": "raquel.samaniego95@gmail.com",
+      "telefono": "652652652",
+      "numeroComensales": "10",
+      "alergenos": [],
+      "observaciones": "tkyedtykdtkdty",
+      "suscrito": false,
+      "id": 5
     }
   ],
   "alergenos": [
-   {
+    {
       "id": 1,
-      "nombre": "Contiene gluten",
+      "nombre": "Gluten",
       "img": "1.png"
     },
     {

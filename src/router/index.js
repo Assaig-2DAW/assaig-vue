@@ -12,6 +12,18 @@ const router = createRouter({
       name: 'home',
       component: HomeView
     },
+
+    // {
+    //   path: '/reserva/:id',
+    //   name: 'editar-reserva',
+    //   component: ReservaForm,
+    //   props: true
+    // },
+    {
+      path: '/:section?',
+      name: 'calendar',
+      component: HomeView,
+    },
     {
       path: '/reserva/:id',
       name: 'reserva',
