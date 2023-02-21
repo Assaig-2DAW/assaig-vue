@@ -7,7 +7,7 @@ import '@vuepic/vue-datepicker/dist/main.css';
 export default {
     computed: {
         ...mapState(useDataStore, {
-            menus: 'menus',
+            fechas: 'fechas',
         })
     },
     components: {
@@ -30,12 +30,9 @@ export default {
 </script>
 
 <template>
-    <Datepicker v-model="date" inline :min-date="new Date()" 
-        :day-names="['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom']"
+    <Datepicker v-model="date" inline :min-date="new Date()" :day-names="['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom']"
         :month-change-on-scroll="false" :preview-format="format">
-</Datepicker>
+    </Datepicker>
 </template>
 
-<style>
-
-</style>
+<style></style>
