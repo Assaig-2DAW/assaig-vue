@@ -34,7 +34,6 @@ export const useDataStore = defineStore('data', {
       } catch (err) {
         alert('Error al cargar el json: ' + err)
       }
-
     },
 
     loadCalendar() {
@@ -58,14 +57,14 @@ export const useDataStore = defineStore('data', {
           if (searched) {
             this.addToolTip(searched, menu)
             this.addPropertyToDay(searched, menu)
-            if(!searched.classList.contains('rojo')) {
+            if (!searched.classList.contains('rojo')) {
               var contenido = searched.innerHTML;
               var enlace = document.createElement("a");
               enlace.href = '/reserva/' + menu.id;
               enlace.innerHTML = contenido;
               searched.innerHTML = "";
               searched.appendChild(enlace);
-  
+
               searched.addEventListener("click", function () {
                 window.location = this.querySelector("a").href;
               });
@@ -86,7 +85,7 @@ export const useDataStore = defineStore('data', {
       }
 
       searched.addEventListener("mouseover", function () {
-        setTimeout(showTooltip, 50);
+        setTimeout(showTooltip, 10);
       });
       searched.addEventListener("mouseout", function () {
         var tooltip = document.getElementById('tooltip')
@@ -98,9 +97,9 @@ export const useDataStore = defineStore('data', {
       let plazasToTales = menu.pax + menu.overbooking
       let reservasRealizadas = this.getReservasHechas(menu)
 
-      if (reservasRealizadas == plazasToTales) {
+      if (reservasRealizadas >= plazasToTales) {
         searched.classList.add('rojo')
-      } else if (reservasRealizadas > menu.plazas) {
+      } else if (reservasRealizadas > menu.pax) {
         searched.classList.add('amarillo')
       } else {
         searched.classList.add('verde')
@@ -110,6 +109,9 @@ export const useDataStore = defineStore('data', {
     getPlazasDisponibles(menu) {
       let plazasToTales = menu.pax + menu.overbooking
       let reservasRealizadas = this.getReservasHechas(menu)
+      if ((plazasToTales - reservasRealizadas) <= 0) {
+        return 0
+      }
       return plazasToTales - reservasRealizadas
     },
 
@@ -133,12 +135,12 @@ export const useDataStore = defineStore('data', {
         } else {
           await axios.post(SERVER + '/reservas', {
             'nombre': values.nombre,
-            'email': values.email ,
-            'telefono':values.telefono ,
-            'comensales': values.comensales ,
+            'email': values.email,
+            'telefono': values.telefono,
+            'comensales': values.comensales,
             'observaciones': values.observaciones,
             'fecha_id': values.fecha_id,
-            'alergenos':values.alergenos
+            'alergenos': values.alergenos
           })
         }
         return true
