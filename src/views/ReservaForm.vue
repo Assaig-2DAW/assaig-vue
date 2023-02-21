@@ -19,6 +19,7 @@ export default {
       telefono: yup.string().required(),
       observaciones: yup.string(),
       comensales: yup.number().required().min(1),
+      alergenos: yup.array()
     })
     return {
       reserva: {},
@@ -59,7 +60,7 @@ export default {
       this.reserva = this.getReserva(this.$route.params.id);
     },
     submitForm(values) {
-      if ((document.querySelector("#alergenos").style.display = "none")) {
+      if ((document.querySelector("#alergenos").style.display === "none")) {
         values["alergenos"] = [];
       }
 
@@ -173,7 +174,7 @@ export default {
           </div>
 
           <br />
-          <button type="submit" @click="submitForm" class="btn guardar">Guardar</button>
+          <button type="submit" class="btn guardar">Guardar</button>
           <button type="button" class="btn cancelar" @click="cancel">Cancelar</button>
         </fieldset>
       </Form>

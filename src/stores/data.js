@@ -136,9 +136,9 @@ export const useDataStore = defineStore('data', {
             'email': values.email ,
             'telefono':values.telefono ,
             'comensales': values.comensales ,
-            'observaciones': values.observaciones ?? 'ninguna',
-            'fecha_id': 1,
-            'alergenos':values.alergenos ?? []
+            'observaciones': values.observaciones,
+            'fecha_id': values.fecha_id,
+            'alergenos':values.alergenos
           })
         }
         return true
