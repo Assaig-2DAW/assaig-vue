@@ -41,37 +41,50 @@ export const useDataStore = defineStore('data', {
       const hourDiv = document.querySelector(`[data-test="open-time-picker-btn"]`);
       const selectDiv = document.querySelector(`[class="dp__action_row"]`);
       const classActive = document.querySelector(".dp__active_date");
+
       if (hourDiv && selectDiv && classActive) {
-        console.log('hola')
         hourDiv.remove();
         selectDiv.remove();
         classActive.classList.remove("dp__active_date");
-
-        this.fechas.forEach(menu => {
-          let fechaMenu = String(new Date(menu.fecha))
-          const parts = fechaMenu.split(' ');
-          parts[4] = "00:00:00"
-          const date = parts.join(' ');
-          const searched = document.querySelector(`[data-test="` + date + `"]`);
-
-          if (searched) {
-            this.addToolTip(searched, menu)
-            this.addPropertyToDay(searched, menu)
-            if (!searched.classList.contains('rojo')) {
-              var contenido = searched.innerHTML;
-              var enlace = document.createElement("a");
-              enlace.href = '/reserva/' + menu.id;
-              enlace.innerHTML = contenido;
-              searched.innerHTML = "";
-              searched.appendChild(enlace);
-
-              searched.addEventListener("click", function () {
-                window.location = this.querySelector("a").href;
-              });
-            }
-          }
-        });
       }
+      this.loadDays()
+
+      const navNextMonth = document.querySelector(`[aria-label="Next month"]`)
+      navNextMonth.addEventListener("click", function () {
+        this.loadDays()
+      }.bind(this))
+      const navPreventMonth = document.querySelector(`[aria-label="Previous month"]`)
+      navPreventMonth.addEventListener("click", function () {
+        this.loadDays()
+      }.bind(this))
+    },
+
+    loadDays() {
+      this.fechas.forEach(menu => {
+        let fechaMenu = String(new Date(menu.fecha))
+        const parts = fechaMenu.split(' ');
+        parts[4] = "00:00:00"
+        const date = parts.join(' ');
+        const searched = document.querySelector(`[data-test="` + date + `"]`);
+
+        if (searched) {
+          this.addToolTip(searched, menu)
+          this.addPropertyToDay(searched, menu)
+
+          if (!searched.classList.contains('rojo')) {
+            var contenido = searched.innerHTML;
+            var enlace = document.createElement("a");
+            enlace.href = '/reserva/' + menu.id;
+            enlace.innerHTML = contenido;
+            searched.innerHTML = "";
+            searched.appendChild(enlace);
+
+            searched.addEventListener("click", function () {
+              window.location = this.querySelector("a").href;
+            });
+          }
+        }
+      });
     },
 
     addToolTip(searched, menu) {
@@ -80,10 +93,8 @@ export const useDataStore = defineStore('data', {
         var tooltip = document.createElement("span");
         tooltip.id = 'tooltip';
         tooltip.textContent = "Quedan " + plazas + " plazas";
-
         searched.appendChild(tooltip);
       }
-
       searched.addEventListener("mouseover", function () {
         setTimeout(showTooltip, 10);
       });
