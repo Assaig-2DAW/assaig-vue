@@ -16,17 +16,19 @@ export default {
     },
     methods: {
         fetchImage() {
-            axios.get(SERVER + '/images/' + this.menu.menu, {
-                responseType: 'arraybuffer'
-            })
-                .then(response => {
-                    const blob = new Blob([response.data], { type: response.headers['content-type'] });
-                    const imgUrl = URL.createObjectURL(blob);
-                    this.image = imgUrl;
+            if(this.menu.menu) {
+                axios.get(SERVER + '/images/' + this.menu.menu, {
+                    responseType: 'arraybuffer'
                 })
-                .catch(error => {
-                    console.error(error);
-                });
+                    .then(response => {
+                        const blob = new Blob([response.data], { type: response.headers['content-type'] });
+                        const imgUrl = URL.createObjectURL(blob);
+                        this.image = imgUrl;
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+            }
         }
     },
     computed: {
