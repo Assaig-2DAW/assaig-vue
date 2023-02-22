@@ -42,6 +42,24 @@ export default {
     maxComensales() {
       let menu = this.getMenuById(this.$route.params.id);
       return this.getMaxPlazas(menu)
+    },
+    plazas() {
+      let menu = this.getMenuById(this.$route.params.id);
+
+      let plazasDisponibles = this.getPlazasDisponibles(menu)
+      let plazasDisponiblesSinReserva = plazasDisponibles - menu.pax_espera
+
+      if (menu.pax_espera <= 0) {
+        return "Quedan " + plazasDisponibles + " plazas disponibles"
+      } else if (plazasDisponibles > menu.pax_espera) {
+        return "Quedan " + plazasDisponiblesSinReserva + " plazas disponibles y " + menu.pax_espera + " plazas en espera"
+      } else {
+        return "Quedan " + plazasDisponibles + " plazas en espera"
+      }
+    },
+    horario() {
+      let menu = this.getMenuById(this.$route.params.id);
+      return "Abrimos de " + menu.horario_apertura + " a " + menu.horario_cierre
     }
   },
   mounted() {
@@ -120,11 +138,8 @@ export default {
           </div>
           <div class="form-group">
             <label>Comensales:</label>
-            <Field type="number" 
-            class="form-control" 
-            name="comensales" 
-            min="1" 
-            :max="maxComensales"/>
+            <p class="comensales-mensaje">{{ plazas }}</p>
+            <Field type="number" class="form-control" name="comensales" min="1" :max="maxComensales" />
             <ErrorMessage class="error" name="comensales" />
           </div>
 
@@ -172,6 +187,7 @@ export default {
       </Form>
     </div>
     <div class="col-lg-4 col-12 menu-container">
+      <h3>{{ horario }}</h3>
       <menu-item :key="menu.id" :menu="menu"></menu-item>
     </div>
   </div>

@@ -96,7 +96,11 @@ export const useDataStore = defineStore('data', {
       function showTooltip() {
         var tooltip = document.createElement("span");
         tooltip.id = 'tooltip';
-        tooltip.textContent = "Quedan " + plazas + " plazas";
+        if (menu.pax_espera < plazas) {
+          tooltip.textContent = "Quedan " + plazas + " plazas";
+        } else if (menu.pax_espera >= plazas) {
+          tooltip.textContent = "Quedan " + plazas + " plazas en espera";
+        }
         searched.appendChild(tooltip);
       }
       searched.addEventListener("mouseover", function () {
@@ -109,12 +113,14 @@ export const useDataStore = defineStore('data', {
     },
 
     addPropertyToDay(searched, menu) {
-      let plazasToTales = menu.pax + menu.overbooking
+      let plazas = menu.pax + menu.overbooking
+      let plazasEspera = menu.pax_espera
+      let plazasTotales = plazas + plazasEspera
       let reservasRealizadas = this.getReservasHechas(menu)
 
-      if (reservasRealizadas >= plazasToTales) {
+      if ((reservasRealizadas >= plazasTotales)) {
         searched.classList.add('rojo')
-      } else if (reservasRealizadas > menu.pax) {
+      } else if (reservasRealizadas > plazas) {
         searched.classList.add('amarillo')
       } else {
         searched.classList.add('verde')
@@ -122,7 +128,7 @@ export const useDataStore = defineStore('data', {
     },
 
     getPlazasDisponibles(menu) {
-      let plazasToTales = menu.pax + menu.overbooking
+      let plazasToTales = menu.pax + menu.overbooking + menu.pax_espera
       let reservasRealizadas = this.getReservasHechas(menu)
       if ((plazasToTales - reservasRealizadas) <= 0) {
         return 0
@@ -138,21 +144,7 @@ export const useDataStore = defineStore('data', {
       });
       return reservasHechas
     },
-
-    getImageByMenu(menu) {
-      axios.get( SERVER + '/images/' + menu.menu, {
-        responseType: 'arraybuffer'
-      })
-        .then(response => {
-          const blob = new Blob([response.data], { type: response.headers['content-type'] });
-          const imgUrl = URL.createObjectURL(blob);
-          return imgUrl;
-        })
-        .catch(error => {
-          console.error(error);
-        });
-    },
-
+    
     getReserva(idReserva) {
       return this.reservas.find((reserva) => reserva.id == idReserva)
     },
