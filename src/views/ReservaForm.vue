@@ -14,7 +14,7 @@ export default {
   },
   data() {
     const schema = yup.object({
-      nombre: yup.string().required().min(10).max(50),
+      nombre: yup.string().required().min(3).max(50),
       email: yup.string().required().email(),
       telefono: yup.string().required(),
       observaciones: yup.string(),
@@ -41,20 +41,18 @@ export default {
     },
     maxComensales() {
       let menu = this.getMenuById(this.$route.params.id);
-      return this.getMaxPlazas(menu)
+      if((menu.pax + menu.overbooking) <= 0) {
+        return menu.pax_espera
+      }
+      return menu.pax + menu.overbooking
     },
     plazas() {
       let menu = this.getMenuById(this.$route.params.id);
 
-      let plazasDisponibles = this.getPlazasDisponibles(menu)
-      let plazasDisponiblesSinReserva = plazasDisponibles - menu.pax_espera
-
-      if (menu.pax_espera <= 0) {
-        return "Quedan " + plazasDisponibles + " plazas disponibles"
-      } else if (plazasDisponibles > menu.pax_espera) {
-        return "Quedan " + plazasDisponiblesSinReserva + " plazas disponibles y " + menu.pax_espera + " plazas en espera"
-      } else {
-        return "Quedan " + plazasDisponibles + " plazas en espera"
+      if ((menu.pax + menu.overbooking) > 0) {
+        return "Quedan " + (menu.pax + menu.overbooking) + " plazas disponibles"
+      } else if (menu.pax_espera > 0) {
+        return "Su reserva quedará en lista de espera"
       }
     },
     horario() {

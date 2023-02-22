@@ -92,15 +92,11 @@ export const useDataStore = defineStore('data', {
     },
 
     addToolTip(searched, menu) {
-      let plazas = this.getPlazasDisponibles(menu)
+      let plazas = menu.pax + menu.overbooking
       function showTooltip() {
         var tooltip = document.createElement("span");
         tooltip.id = 'tooltip';
-        if (menu.pax_espera < plazas) {
-          tooltip.textContent = "Quedan " + plazas + " plazas";
-        } else if (menu.pax_espera >= plazas) {
-          tooltip.textContent = "Quedan " + plazas + " plazas en espera";
-        }
+        tooltip.textContent = "Quedan " + plazas + " plazas";
         searched.appendChild(tooltip);
       }
       searched.addEventListener("mouseover", function () {
@@ -113,38 +109,16 @@ export const useDataStore = defineStore('data', {
     },
 
     addPropertyToDay(searched, menu) {
-      let plazas = menu.pax + menu.overbooking
-      let plazasEspera = menu.pax_espera
-      let plazasTotales = plazas + plazasEspera
-      let reservasRealizadas = this.getReservasHechas(menu)
-
-      if ((reservasRealizadas >= plazasTotales)) {
-        searched.classList.add('rojo')
-      } else if (reservasRealizadas > plazas) {
+      
+      if ((menu.pax + menu.overbooking) > 0) {
+        searched.classList.add('verde')
+      } else if (menu.pax_espera > 0) {
         searched.classList.add('amarillo')
       } else {
-        searched.classList.add('verde')
+        searched.classList.add('rojo')
       }
     },
 
-    getPlazasDisponibles(menu) {
-      let plazasToTales = menu.pax + menu.overbooking + menu.pax_espera
-      let reservasRealizadas = this.getReservasHechas(menu)
-      if ((plazasToTales - reservasRealizadas) <= 0) {
-        return 0
-      }
-      return plazasToTales - reservasRealizadas
-    },
-
-    getReservasHechas(menu) {
-      let reservasOfMenu = this.reservas.filter((reserva) => reserva.fecha['id'] == menu.id)
-      let reservasHechas = 0
-      reservasOfMenu.forEach(reserva => {
-        reservasHechas += Number(reserva.comensales)
-      });
-      return reservasHechas
-    },
-    
     getReserva(idReserva) {
       return this.reservas.find((reserva) => reserva.id == idReserva)
     },
