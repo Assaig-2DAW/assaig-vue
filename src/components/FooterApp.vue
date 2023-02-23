@@ -9,7 +9,7 @@ export default {
 </script>
 
 <template>
-    <footer class="footer row text-center p-3 text-center text-white mt-5">
+    <footer class="footer text-center p-3 text-center text-white mt-5">
         <section class="col-12 mx-auto pt-5">
             <div class="row">
                 <div class="col-md-3 col-lg-4 col-xl-3 pl-0 text-md-start text-center">
