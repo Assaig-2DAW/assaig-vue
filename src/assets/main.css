@@ -401,6 +401,36 @@ span {
   letter-spacing: 1px;
 }
 
+/* FOOTER */
+
+.footer {
+  display: flex;
+  max-width: 100%;
+  background-color: rgb(15, 15, 15);
+  color: rgb(255, 255, 255);
+  z-index: 6;
+}
+
+.footer .enlace {
+  padding: 0;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+.footer .enlace:hover {
+  color: rgb(98, 175, 25);
+  text-decoration: none;
+}
+
+.footer i {
+  color: rgb(255, 255, 255);
+  padding-right: 10px;
+}
+
+.footer i:hover {
+  color: rgb(98, 175, 25);
+}
+
 /* MEDIA QUERYS */
 
 @media (min-width: 1151px) and (max-width: 1500px) {
@@ -728,4 +758,10 @@ span {
     height: auto;
   }
 
+}
+
+@media (min-width: 1800px) {
+  .line {
+    padding-left: 7%;
+  }
 }

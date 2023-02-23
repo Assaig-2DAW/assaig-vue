@@ -4,10 +4,12 @@ import { useDataStore } from './stores/data'
 import { mapState, mapActions } from 'pinia';
 
 import NavApp from './components/NavApp.vue'
+import FooterApp from './components/FooterApp.vue'
 
 export default {
   components: {
     NavApp,
+    FooterApp
   },
   methods: {
     ...mapActions(useDataStore, ['loadData'])
@@ -21,6 +23,7 @@ export default {
 <template>
   <nav-app></nav-app>
   <router-view :key="$route.fullPath"></router-view>
+  <footer-app></footer-app>
 </template>
 
 <style scoped>
