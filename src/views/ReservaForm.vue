@@ -14,11 +14,11 @@ export default {
   },
   data() {
     const schema = yup.object({
-      nombre: yup.string().required().min(3).max(50),
-      email: yup.string().required().email(),
-      telefono: yup.string().required(),
+      nombre: yup.string().required('Este campo es obligatorio').min(3, 'Este campo debe contener minimo 3 caracteres').max(50, 'Este campo admite máximo 50 caracteres'),
+      email: yup.string().required('Este campo es obligatorio').email('Debes introducir un email valido'),
+      telefono: yup.string().required('Este campo es obligatorio').matches(/^[6-9]\d{8}$/, 'El numero de telefono no es valido'),
       observaciones: yup.string(),
-      comensales: yup.number().required().min(1),
+      comensales: yup.number().required('Este campo es obligatorio').min(1),
       alergenos: yup.array()
     })
     return {
